@@ -6,6 +6,7 @@ import ContinueLearning from "@/components/dashboard/ContinueLearning";
 import RecentCourses from "@/components/dashboard/RecentCourses";
 import UpcomingAssignments from "@/components/dashboard/UpcomingAssignments";
 import Announcements from "@/components/dashboard/Announcements";
+import FeaturedCourses from "@/components/dashboard/FeaturedCourses";
 
 export default function Dashboard() {
   return (
@@ -30,8 +31,12 @@ export default function Dashboard() {
             <UpcomingAssignments />
             <Announcements />
           </div>
+
           <ContinueLearning />
+          
           <RecentCourses />
+          
+          <FeaturedCourses />
         </main>
       </div>
 

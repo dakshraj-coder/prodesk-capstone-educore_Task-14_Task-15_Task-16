@@ -1,41 +1,41 @@
+"use client";
+
 import CourseCard from "@/components/dashboard/CourseCard";
+import { courses } from "@/data/courses";
+
+import { useState } from "react";
 
 export default function CoursesPage() {
-  const courses = [
-    {
-      id: 1,
-      title: "React Fundamentals",
-      instructor: "John Smith",
-      duration: "10 Hours",
-    },
-    {
-      id: 2,
-      title: "Next.js Masterclass",
-      instructor: "Sarah Johnson",
-      duration: "12 Hours",
-    },
-    {
-      id: 3,
-      title: "TypeScript Essentials",
-      instructor: "David Lee",
-      duration: "8 Hours",
-    },
-  ];
+  const [searchTerm, setSearchTerm] = useState("");
 
+const filteredCourses = courses.filter((course) =>
+  course.title.toLowerCase().includes(searchTerm.toLowerCase())
+);
   return (
     <main className="min-h-screen bg-slate-100 p-8">
       <h1 className="mb-8 text-3xl font-bold">
         Course Catalog
       </h1>
 
+      <div className="mb-6">
+        <input
+        type="text"
+        placeholder="Search courses..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        className="w-full rounded-lg border border-gray-300 p-3"
+      />
+      </div>
+
       <div className="grid gap-6 md:grid-cols-3">
-        {courses.map((course) => (
+        {filteredCourses.map((course) => (
           <CourseCard
-          key={course.id}
-          id={course.id}
-          title={course.title}
-          instructor={course.instructor}
-          duration={course.duration}
+            key={course.id}
+            id={course.id}
+            title={course.title}
+            instructor={course.instructor}
+            duration={course.duration}
+            image={course.image}
           />
         ))}
       </div>
